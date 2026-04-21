@@ -9,19 +9,62 @@ const UserRequest = () => {
 
   // Updated data to match the "Krishna Das" format
   const tableData = [
-    {
-      id: 1,
-      firstName: 'Krishna',
-      lastName: 'Das',
-      username: 'SP028',
-      mobile: '809829919',
-      email: 'Krishna@gmail.com',
-      role: 'Maker',
-      date: '19/06/2024',
-      status: 'Active'
-    },
-  ];
-
+  {
+    id: 1,
+    firstName: 'Krishna',
+    lastName: 'Das',
+    username: 'SP028',
+    mobile: '809829919',
+    email: 'krishna@gmail.com',
+    role: 'Maker',
+    date: '19/06/2024',
+    status: 'Active'
+  },
+  {
+    id: 2,
+    firstName: 'Ravi',
+    lastName: 'Sharma',
+    username: 'SP029',
+    mobile: '9876543210',
+    email: 'ravi.sharma@gmail.com',
+    role: 'Checker',
+    date: '20/06/2024',
+    status: 'Active'
+  },
+  {
+    id: 3,
+    firstName: 'Anjali',
+    lastName: 'Mehta',
+    username: 'SP030',
+    mobile: '9123456780',
+    email: 'anjali.mehta@gmail.com',
+    role: 'Maker',
+    date: '21/06/2024',
+    status: 'Inactive'
+  },
+  {
+    id: 4,
+    firstName: 'Suresh',
+    lastName: 'Kumar',
+    username: 'SP031',
+    mobile: '9988776655',
+    email: 'suresh.kumar@gmail.com',
+    role: 'Admin',
+    date: '22/06/2024',
+    status: 'Active'
+  },
+  {
+    id: 5,
+    firstName: 'Priya',
+    lastName: 'Nair',
+    username: 'SP032',
+    mobile: '9012345678',
+    email: 'priya.nair@gmail.com',
+    role: 'Checker',
+    date: '23/06/2024',
+    status: 'Pending'
+  }
+];
   const toggleRow = (id) => {
     setExpandedRow(expandedRow === id ? null : id);
   };
@@ -67,13 +110,18 @@ const UserRequest = () => {
                 <input type="date" className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-md text-sm outline-none" />
               </div>
               <select className="bg-gray-50 border rounded-md px-3 py-2.5 text-sm outline-none">
-                <option>User Type</option>
-                <option value="cbc_maker">CBC maker</option>
-                <option value="master_distributor">Master Distributer</option>
+               <option>User Type</option>
+              <option>CBC maker</option>
+              <option>Master Distributer</option>
+              <option>Distributer</option>
+              <option>Agent</option>
+              <option>CBC</option>
               </select>
               <select className="bg-gray-50 border rounded-md px-3 py-2.5 text-sm outline-none">
                 <option>All Status</option>
-                <option value="approved">Approved</option>
+                <option>Rejected</option>
+                <option>Pending</option>
+                <option>Approved</option>
               </select>
             </>
           )}
@@ -162,7 +210,7 @@ const UserRequest = () => {
                     <div className="flex items-center justify-center gap-4">
                       {/* View Details with Eye Icon */}
                       <button
-                        onClick={() => navigate('/dashboard/user-profile')}
+                        onClick={() => navigate('/dashboard/user-profile', { state: { user: row } })}
                         className="text-[#8B0000]  text-sm whitespace-nowrap flex items-center justify-center gap-2"
                       >
 

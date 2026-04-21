@@ -1,11 +1,44 @@
 import React, { useState } from 'react';
-import { Info, Download, Search, Calendar, ChevronDown, Eye } from 'lucide-react';
+import { Download, Search, Calendar, ChevronDown, Eye } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
 
 const UserListReport = () => {
   const navigate = useNavigate();
   const [searchMode, setSearchMode] = useState('date');
+
+  // Example user data
+  const users = [
+    {
+      firstName: "Krishna",
+      lastName: "Das",
+      username: "SP028",
+      mobile: "809829919",
+      email: "Krishna@gmail.com",
+      role: "Maker",
+      dateCreated: "19/06/2024",
+      status: "Active",
+    },
+    {
+      firstName: "Rahul",
+      lastName: "Sharma",
+      username: "RS102",
+      mobile: "987654321",
+      email: "Rahul@gmail.com",
+      role: "Agent",
+      dateCreated: "15/03/2024",
+      status: "Pending",
+    },
+    {
+      firstName: "Anita",
+      lastName: "Verma",
+      username: "AV203",
+      mobile: "912345678",
+      email: "Anita@gmail.com",
+      role: "CBC maker",
+      dateCreated: "10/01/2024",
+      status: "Approved",
+    },
+  ];
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
@@ -81,19 +114,16 @@ const UserListReport = () => {
 
         <button className="bg-[#8B0000] text-white px-4 py-2 rounded-md flex items-center justify-center gap-2 text-sm font-bold hover:bg-[#a00000] transition-colors">
           <Download size={18} />
-          {searchMode === 'date' ? 'Search' : 'Download Excel'}
+          Download Excel
         </button>
       </div>
 
-      {/* TABLE WRAPPER - Important for responsiveness */}
-      <div className="overflow-x-auto  rounded-lg">
+      {/* TABLE WRAPPER */}
+      <div className="overflow-x-auto rounded-lg">
         <table className="w-full text-left text-sm text-gray-600 border-collapse">
-          <thead className="bg-gray-50 ">
+          <thead className="bg-gray-50">
             <tr>
-              {/* Checkbox Header - No icon here */}
               <th className="px-4 py-4 w-10"></th>
-
-              {/* Data Headers with Sort Icons */}
               <th className="px-4 py-4 font-semibold">
                 <div className="flex items-center gap-1 cursor-pointer">
                   First Name <ChevronDown size={14} className="text-gray-400" />
@@ -136,97 +166,43 @@ const UserListReport = () => {
               </th>
               <th className="px-4 py-4 font-semibold text-center">Action</th>
             </tr>
-
           </thead>
 
           <tbody className="divide-y divide-gray-100">
-            <tr className="hover:bg-gray-50 transition-colors">
-              <td className="px-4 py-4">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 accent-[#8B0000]" />
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap">Krishna</td>
-              <td className="px-4 py-4 whitespace-nowrap">Das</td>
-              <td className="px-4 py-4 whitespace-nowrap text-gray-500">SP028</td>
-              <td className="px-4 py-4 whitespace-nowrap">809829919</td>
-              <td className="px-4 py-4 whitespace-nowrap">Krishna@gmail.com</td>
-              <td className="px-4 py-4 whitespace-nowrap">Maker</td>
-              <td className="px-4 py-4 whitespace-nowrap">19/06/2024</td>
-              <td className="px-4 py-4">
-                <span className="text-green-600 font-medium bg-green-50 px-2.5 py-0.5 rounded-full text-xs">
-                  Active
-                </span>
-              </td>
-              <td className="px-4 py-4 text-center">
-                <button
-                  onClick={() => navigate('/dashboard/user-profile')}
-                  className="text-[#8B0000] hover:underline font-semibold text-sm whitespace-nowrap flex items-center justify-center gap-2"
-                >
-
-                  View Details<Eye size={18} className="text-[#8B0000]" />
-                </button>
-
-              </td>
-            </tr>
+            {users.map((user, index) => (
+              <tr key={index} className="hover:bg-gray-50 transition-colors">
+                <td className="px-4 py-4">
+                  <input type="checkbox" className="w-4 h-4 rounded border-gray-300 accent-[#8B0000]" />
+                </td>
+                <td className="px-4 py-4 whitespace-nowrap">{user.firstName}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{user.lastName}</td>
+                <td className="px-4 py-4 whitespace-nowrap text-gray-500">{user.username}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{user.mobile}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{user.email}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{user.role}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{user.dateCreated}</td>
+                <td className="px-4 py-4">
+                  <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                    user.status === "Active"
+                      ? "text-green-600 bg-green-50"
+                      : user.status === "Pending"
+                      ? "text-yellow-600 bg-yellow-50"
+                      : "text-red-600 bg-red-50"
+                  }`}>
+                    {user.status}
+                  </span>
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <button
+                    onClick={() => navigate('/dashboard/user-profile', { state: { user } })}
+                        className="text-[#8B0000]  text-sm whitespace-nowrap flex items-center justify-center gap-2"
+                  >
+                    View Details <Eye size={18} className="text-[#8B0000]" />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
-          <tbody className="divide-y divide-gray-100">
-            <tr className="hover:bg-gray-50 transition-colors">
-              <td className="px-4 py-4">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 accent-[#8B0000]" />
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap">Krishna</td>
-              <td className="px-4 py-4 whitespace-nowrap">Das</td>
-              <td className="px-4 py-4 whitespace-nowrap text-gray-500">SP028</td>
-              <td className="px-4 py-4 whitespace-nowrap">809829919</td>
-              <td className="px-4 py-4 whitespace-nowrap">Krishna@gmail.com</td>
-              <td className="px-4 py-4 whitespace-nowrap">Maker</td>
-              <td className="px-4 py-4 whitespace-nowrap">19/06/2024</td>
-              <td className="px-4 py-4">
-                <span className="text-green-600 font-medium bg-green-50 px-2.5 py-0.5 rounded-full text-xs">
-                  Active
-                </span>
-              </td>
-              <td className="px-4 py-4 text-center">
-                <button
-                  onClick={() => navigate('/dashboard/user-profile')}
-                  className="text-[#8B0000] hover:underline font-semibold text-sm whitespace-nowrap flex items-center justify-center gap-2"
-                >
-
-                  View Details<Eye size={18} className="text-[#8B0000]" />
-                </button>
-
-              </td>
-            </tr>
-          </tbody>
-          <tbody className="divide-y divide-gray-100">
-            <tr className="hover:bg-gray-50 transition-colors">
-              <td className="px-4 py-4">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 accent-[#8B0000]" />
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap">Krishna</td>
-              <td className="px-4 py-4 whitespace-nowrap">Das</td>
-              <td className="px-4 py-4 whitespace-nowrap text-gray-500">SP028</td>
-              <td className="px-4 py-4 whitespace-nowrap">809829919</td>
-              <td className="px-4 py-4 whitespace-nowrap">Krishna@gmail.com</td>
-              <td className="px-4 py-4 whitespace-nowrap">Maker</td>
-              <td className="px-4 py-4 whitespace-nowrap">19/06/2024</td>
-              <td className="px-4 py-4">
-                <span className="text-green-600 font-medium bg-green-50 px-2.5 py-0.5 rounded-full text-xs">
-                  Active
-                </span>
-              </td>
-              <td className="px-4 py-4 text-center">
-                <button
-                  onClick={() => navigate('/dashboard/user-profile')}
-                  className="text-[#8B0000] hover:underline font-semibold text-sm whitespace-nowrap flex items-center justify-center gap-2"
-                >
-
-                  View Details<Eye size={18} className="text-[#8B0000]" />
-                </button>
-
-              </td>
-            </tr>
-          </tbody>
-
         </table>
       </div>
     </div>
