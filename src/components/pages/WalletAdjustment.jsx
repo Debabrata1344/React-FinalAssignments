@@ -37,12 +37,12 @@ const WalletAdjustment = () => {
         <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-gray-400">User Name</label>
-            <input type="text" value="AG7435421" disabled className="px-4 py-3 bg-gray-50 border border-gray-100 rounded-md text-gray-500" />
+            <input type="text" placeholder="userName" className="px-4 py-3 bg-white border border-gray-200 rounded-md outline-none focus:border-[#8B0000]" />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-gray-400">Name</label>
-            <input type="text" value="Pabitra Hota" disabled className="px-4 py-3 bg-gray-50 border border-gray-100 rounded-md text-gray-500" />
+             <label className="text-sm font-medium text-gray-400">Name</label>
+            <input type="text" placeholder="Name" className="px-4 py-3 bg-white border border-gray-200 rounded-md outline-none focus:border-[#8B0000]" />
           </div>
 
           <div className="flex flex-col gap-2">
@@ -61,7 +61,11 @@ const WalletAdjustment = () => {
 
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-gray-400">Wallet</label>
-            <input type="text" value="Wallet 2" disabled className="px-4 py-3 bg-gray-50 border border-gray-100 rounded-md text-gray-500" />
+            <select className="px-4 py-3 bg-white border border-gray-200 rounded-md outline-none focus:border-[#8B0000]">
+              <option>Select Wallet</option>
+              <option>Wallet 1</option>
+              <option>Wallet 2</option>
+            </select>
           </div>
 
           <div className="flex flex-col gap-2">

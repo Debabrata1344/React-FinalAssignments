@@ -145,7 +145,6 @@ const AuthSystem = () => {
   if (step === 'login') {
     return (
       <CardWrapper>
-        <h2 className="text-[24px] font-bold text-[#1A1A1A] mb-6">Login to your Account</h2>
         <form className="w-full max-w-[395px] space-y-6" onSubmit={handleLogin}>
           {/* Username */}
           <div className="flex flex-col gap-1.5 text-left">

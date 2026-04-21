@@ -38,13 +38,18 @@ const Sidebar = ({ isOpen }) => {
                         >
                             <div className="flex items-center gap-3">
                                 <Users size={20} />
-                                {isOpen && <span className="font-medium">Bank User Management</span>}
+                                {isOpen && <span className="font-medium">User Management</span>}
                             </div>
                             {isOpen && (isUserMgmtOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />)}
                         </div>
 
                         {isOpen && isUserMgmtOpen && (
                             <ul className="bg-gray-50/50">
+                                <Link to="/dashboard/create-user">
+                                    <li className={`pl-14 py-2 text-[14px] cursor-pointer ${isActive('/dashboard/create-user') ? 'text-[#8B0000] font-bold border-r-4 border-[#8B0000] bg-[#FDF2F2]' : 'text-gray-500 hover:text-[#8B0000]'}`}>
+                                        Create CBC User
+                                    </li>
+                                </Link>
                                 <Link to="/dashboard/user-request">
                                     <li className={`pl-14 py-2 text-[14px] cursor-pointer ${isActive('/dashboard/user-request') ? 'text-[#8B0000] font-bold border-r-4 border-[#8B0000] bg-[#FDF2F2]' : 'text-gray-500 hover:text-[#8B0000]'}`}>
                                         User Request
