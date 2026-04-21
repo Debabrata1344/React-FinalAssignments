@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import { Menu, Bell, ChevronDown, LogOut } from 'lucide-react';
 
-const Header = ({ toggleSidebar }) => {
+
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = '/login';
+  };
+
+  const Header = ({ toggleSidebar }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // ✅ Get from localStorage
+  const userName = localStorage.getItem("userName") || "User";
 
   const handleLogout = () => {
     localStorage.clear();
@@ -42,7 +52,7 @@ const Header = ({ toggleSidebar }) => {
           </div>
 
           <span className="text-sm font-semibold text-gray-700">
-            Stebin Ben
+            {userName}
           </span>
 
           {/* Toggle */}

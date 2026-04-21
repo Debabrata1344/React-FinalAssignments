@@ -20,7 +20,7 @@ const DashboardLayout = () => {
         <Header toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
 
         {/* DYNAMIC PAGE CONTENT */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#F8F9FA]">
+        <main className="flex-1 overflow-y-auto  bg-[#F8F9FA]">
           {/* The <Outlet /> is a placeholder. 
             React Router will swap this out for UserRequest, AuditTrail, etc. 
             depending on the URL.

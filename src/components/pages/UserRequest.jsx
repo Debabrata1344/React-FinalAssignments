@@ -9,16 +9,16 @@ const UserRequest = () => {
 
   // Updated data to match the "Krishna Das" format
   const tableData = [
-    { 
-      id: 1, 
-      firstName: 'Krishna', 
-      lastName: 'Das', 
-      username: 'SP028', 
-      mobile: '809829919', 
-      email: 'Krishna@gmail.com', 
-      role: 'Maker', 
-      date: '19/06/2024', 
-      status: 'Active' 
+    {
+      id: 1,
+      firstName: 'Krishna',
+      lastName: 'Das',
+      username: 'SP028',
+      mobile: '809829919',
+      email: 'Krishna@gmail.com',
+      role: 'Maker',
+      date: '19/06/2024',
+      status: 'Active'
     },
   ];
 
@@ -92,8 +92,8 @@ const UserRequest = () => {
             <tr className="text-gray-600 text-[13px] font-semibold">
               <th className="px-6 py-4 w-10"></th>
               {[
-                "First Name", "Last Name", "User Name", "Mobile No.", 
-                "Email ID", "Role", "Date Created", "Status"
+                "First Name", "Last Name", "User Name", "Mobile No.",
+                "Email ID", "Role", "Date Created", "Status", "update"
               ].map((header) => (
                 <th key={header} className="px-6 py-4">
                   <div className="flex items-center gap-1">
@@ -126,15 +126,49 @@ const UserRequest = () => {
                   </td>
                   <td className="px-6 py-5 text-center">
                     <div className="flex items-center justify-center gap-4">
+
+                      {/* Update Button (NEW) */}
+                      <button
+                        onClick={() => navigate('/dashboard/functionalities')}
+                        className="text-green-600 hover:underline font-semibold text-sm whitespace-nowrap flex items-center justify-center gap-2"
+                      >
+                        Update
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-4 h-4 text-green-600"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                      </button>
+
+                      {/* Expand Button */}
+                      <button onClick={() => toggleRow(row.id)}>
+                        <ChevronDown
+                          size={18}
+                          className={`text-gray-400 transition-transform ${expandedRow === row.id ? 'rotate-180' : ''
+                            }`}
+                        />
+                      </button>
+
+                    </div>
+                  </td>
+
+                  <td className="px-6 py-5 text-center">
+                    <div className="flex items-center justify-center gap-4">
                       {/* View Details with Eye Icon */}
                       <button
-                                        onClick={() => navigate('/dashboard/user-profile')} 
-                                        className="text-[#8B0000] hover:underline font-semibold text-sm whitespace-nowrap flex items-center justify-center gap-2"
-                                      >
-                      
-                                        View Details<Eye size={18} className="text-[#8B0000]" />
-                                      </button>
-                      
+                        onClick={() => navigate('/dashboard/user-profile')}
+                        className="text-[#8B0000]  text-sm whitespace-nowrap flex items-center justify-center gap-2"
+                      >
+
+                        View Details<Eye size={18} className="text-[#8B0000]" />
+                      </button>
+
                       {/* Original Expand functionality */}
                       <button onClick={() => toggleRow(row.id)}>
                         <ChevronDown size={18} className={`text-gray-400 transition-transform ${expandedRow === row.id ? 'rotate-180' : ''}`} />
@@ -143,19 +177,6 @@ const UserRequest = () => {
                   </td>
                 </tr>
 
-                {/* EXPANDABLE SECTION */}
-                {expandedRow === row.id && (
-                  <tr className="bg-gray-50/50">
-                    <td colSpan="10" className="px-12 py-6 text-sm border-l-4 border-[#8B0000]">
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div><p className="text-gray-400 mb-1">Full Name</p><p className="font-bold">{row.firstName} {row.lastName}</p></div>
-                        <div><p className="text-gray-400 mb-1">User ID</p><p className="font-bold">{row.username}</p></div>
-                        <div><p className="text-gray-400 mb-1">Contact</p><p className="font-bold">{row.mobile}</p></div>
-                        <div><p className="text-gray-400 mb-1">Joined Date</p><p className="font-bold">{row.date}</p></div>
-                      </div>
-                    </td>
-                  </tr>
-                )}
               </React.Fragment>
             ))}
           </tbody>

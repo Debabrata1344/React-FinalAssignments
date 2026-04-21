@@ -2,11 +2,18 @@ import React from 'react';
 
 const DashboardHome = () => {
   return (
-    <div className="h-full flex flex-col items-center justify-center text-center">
-      <h1 className="text-4xl font-bold text-gray-800 mb-2">Welcome to NSDL</h1>
-      <p className="text-gray-500 text-xl font-medium">
-        Banking made easy - <span className="text-[#8B0000]">JUST IN A JIFFY</span>
-      </p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#fcfcfc] font-sans">
+      <div className="space-y-2">
+        {/* Main Title */}
+        <h1 className="text-2xl font-semibold text-gray-800 tracking-tight">
+          Welcome to NSDL
+        </h1>
+        
+        {/* Sub-text */}
+        <p className="text-gray-400 text-sm font-medium tracking-wide uppercase">
+          Banking made easy - <span className="italic">JUST IN A JIFFY</span>
+        </p>
+      </div>
     </div>
   );
 };

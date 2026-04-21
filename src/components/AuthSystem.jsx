@@ -105,6 +105,7 @@ const AuthSystem = () => {
     // If finalData is the object you shared (with access_token)
     if (finalData && finalData.access_token) {
       localStorage.setItem('access_token', finalData.access_token);
+      localStorage.setItem("userName", finalData.userType);
       localStorage.setItem('user_details', JSON.stringify(finalData));
       
       console.log("Login Successful, Token received");
