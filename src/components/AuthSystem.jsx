@@ -134,11 +134,7 @@ const AuthSystem = () => {
           </div>
           {children}
         </div>
-        <div className="mt-8 flex gap-8 text-[12px] text-gray-400">
-          <span className="hover:underline cursor-pointer">Terms and Conditions</span>
-          <span className="hover:underline cursor-pointer">Privacy Policy</span>
-          <span className="hover:underline cursor-pointer">CA Privacy Notice</span>
-        </div>
+        
       </div>
     </div>
   );
