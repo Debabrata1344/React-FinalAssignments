@@ -83,12 +83,12 @@ const Sidebar = ({ isOpen }) => {
                     </li>
 
                     {/* Audit Trail */}
-                    <Link to="/dashboard/audit-trail">
+                    
                         <li className={`flex items-center gap-3 px-6 py-3 cursor-pointer ${isActive('/dashboard/audit-trail') ? 'bg-[#FDF2F2] border-r-4 border-[#8B0000] text-[#8B0000]' : 'text-gray-600 hover:bg-gray-50'}`}>
                             <FileText size={20} />
                             {isOpen && <span className="font-medium">Audit Trail</span>}
                         </li>
-                    </Link>
+                    
 
 
                     {/* Wallet Adjustment Link */}

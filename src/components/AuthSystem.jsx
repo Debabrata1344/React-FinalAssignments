@@ -201,11 +201,12 @@ const AuthSystem = () => {
     return (
       <CardWrapper>
         <h2 className="text-[24px] font-bold text-[#1A1A1A] mb-4">Forgot Password</h2>
-        <p className="text-gray-500 text-center text-[14px] mb-8 px-4">Lost your password? No worries. Enter your Mobile Number, and we'll help you reset it.</p>
+        <p className="text-gray-500 text-center text-[14px] mb-8 px-4">Forgot Password?
+Put your Username and verify OTP then you will receive a new password in your inbox</p>
         <div className="w-full max-w-[395px] space-y-6 text-left">
           <div className="flex flex-col gap-1.5">
-            <label className="text-[14px] text-gray-500 font-medium">Mobile Number</label>
-            <input type="text" placeholder="Please enter your Mobile Number" className="w-full h-[50px] px-4 border border-gray-200 rounded-md outline-none focus:border-red-800" />
+            <label className="text-[14px] text-gray-500 font-medium">UserName</label>
+            <input type="text" placeholder="Please enter your username" className="w-full h-[50px] px-4 border border-gray-200 rounded-md outline-none focus:border-red-800" />
           </div>
           <button onClick={() => setStep('otp')} className="w-full h-[48px] bg-[#8B0000] text-white font-bold rounded-md uppercase">Send OTP</button>
           <p className="text-center text-[14px]">Remembered Password? <button onClick={() => setStep('login')} className="text-red-800 font-bold hover:underline">Log In</button></p>

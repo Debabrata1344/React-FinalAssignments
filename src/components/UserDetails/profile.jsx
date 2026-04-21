@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { ChevronLeft, Mail, Phone } from 'lucide-react';
+import panCardImg from '../../assets/pan-card-front.png';
+import panCardback from '../../assets/pan-back.png';
+import aadharfront from '../../assets/aadhar-card-front.png';
+import aadharback from '../../assets/aadhar-back.jpg';
+import chrome from '../../assets/chrome.jpg';
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState('Basic Details');
@@ -102,16 +107,16 @@ const UserProfile = () => {
               <div className="flex flex-wrap gap-4">
                 <div className="group relative overflow-hidden rounded-xl border border-gray-200 shadow-sm transition-hover hover:shadow-md">
                   <img
-                    src="https://placeholder.com"
+                    src={panCardImg}
                     alt="PAN Card Front"
                     className="h-40 w-64 object-cover"
-                  />
+/>
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
                 </div>
 
                 <div className="group relative overflow-hidden rounded-xl border border-gray-200 shadow-sm transition-hover hover:shadow-md">
                   <img
-                    src="https://placeholder.com"
+                    src={panCardback}
                     alt="PAN Card Back"
                     className="h-40 w-64 object-cover"
                   />
@@ -121,7 +126,7 @@ const UserProfile = () => {
             </div>
           )}{/* Aadhar Details Tab */}
           {activeTab === 'Aadhar Details' && (
-            <div className="flex flex-col lg:flex-row gap-12 animate-in fade-in duration-300">
+            <div className="flex flex- lg:flex-row gap-12 animate-in fade-in duration-300">
               {/* Text Info */}
               <div className="flex flex-col gap-6 w-full lg:w-1/3">
                 <FormItem label="Name" value="Adeline Ballard" />
@@ -132,11 +137,11 @@ const UserProfile = () => {
               </div>
 
               {/* Image Previews */}
-              <div className="flex flex-wrap gap-4 items-start">
+              <div className="flex  gap-4 items-start">
                 {/* Aadhaar Card Front */}
                 <div className="group relative overflow-hidden rounded-xl border border-gray-200 shadow-sm transition-all hover:shadow-md">
                   <img
-                    src="https://placeholder.com"
+                    src={aadharfront}
                     alt="Aadhar Front"
                     className="h-44 w-72 object-cover"
                   />
@@ -146,7 +151,7 @@ const UserProfile = () => {
                 {/* Aadhaar Card Back */}
                 <div className="group relative overflow-hidden rounded-xl border border-gray-200 shadow-sm transition-all hover:shadow-md">
                   <img
-                    src="https://placeholder.com"
+                    src={aadharback}
                     alt="Aadhar Back"
                     className="h-44 w-72 object-cover"
                   />
@@ -170,11 +175,11 @@ const UserProfile = () => {
               </div>
 
               {/* Side-by-Side Document Comparison */}
-              <div className="flex flex-wrap gap-4 items-start">
+              <div className="flex gap-4 items-start">
                 {/* PAN Card Preview */}
                 <div className="group relative overflow-hidden rounded-xl border border-gray-200 shadow-sm">
                   <img
-                    src="https://placeholder.com"
+                    src={panCardImg}
                     alt="PAN Card"
                     className="h-44 w-72 object-cover"
                   />
@@ -184,7 +189,7 @@ const UserProfile = () => {
                 {/* Aadhaar Card Preview */}
                 <div className="group relative overflow-hidden rounded-xl border border-gray-200 shadow-sm">
                   <img
-                    src="https://placeholder.com"
+                    src={aadharfront}
                     alt="Aadhar Card"
                     className="h-44 w-72 object-cover"
                   />
@@ -238,9 +243,9 @@ const UserProfile = () => {
 
               {/* Browser Visual Indicator */}
               <div className="flex flex-1 justify-center lg:justify-end pr-12 pt-4">
-                <div className="relative h-40 w-40 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
+                <div >
                   <img
-                    src="https://wikimedia.org"
+                    src={chrome}
                     alt="Chrome Logo"
                     className="h-full w-full object-contain"
                   />
