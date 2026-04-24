@@ -20,6 +20,8 @@ const handleChange = (e) => {
 const BASE_URL = "https://apidev-sdk.iserveu.online/NSDL";
 
 const handleCreateUser = async () => {
+
+  const [errors, setErrors] = useState({});
     try {
         // 1. Encrypt your formData
         const securePayload = encryptPayload(formData);
@@ -63,7 +65,40 @@ const handleCreateUser = async () => {
     }
 };
 
+const validate = () => {
+  let newErrors = {};
 
+  if (step === 1) {
+    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
+    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
+    if (!formData.username.trim()) newErrors.username = "Username is required";
+
+    if (!/^[6-9]\d{9}$/.test(formData.mobileNumber))
+      newErrors.mobileNumber = "Enter valid mobile number";
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.emailAddress))
+      newErrors.emailAddress = "Enter valid email";
+
+    if (!formData.city.trim()) newErrors.city = "City is required";
+
+    if (!/^\d{6}$/.test(formData.pin))
+      newErrors.pin = "Enter valid 6 digit PIN";
+  }
+
+  if (step === 2) {
+    if (!formData.companyName?.trim())
+      newErrors.companyName = "Company name required";
+
+    if (!formData.gstNumber?.trim())
+      newErrors.gstNumber = "GST number required";
+
+    if (!formData.agreedToTerms)
+      newErrors.agreedToTerms = "Please accept terms";
+  }
+
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
 
   const inputStyle = { width: '100%', padding: '10px', marginTop: '5px', border: '1px solid #ddd', borderRadius: '4px', boxSizing: 'border-box' };
   const gridStyle = { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px 30px' };

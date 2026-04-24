@@ -11,13 +11,12 @@ const Sidebar = ({ isOpen }) => {
     const [isUserMgmtOpen, setIsUserMgmtOpen] = useState(true);
     const [isReportsOpen, setIsReportsOpen] = useState(false);
 
-    const userName = localStorage.getItem("userName"); // Get logged-in username
+    const userName = localStorage.getItem("userName"); 
 
     const isActive = (path) => location.pathname === path;
 
     return (
-        <aside className={`${isOpen ? 'w-64' : 'w-20'} bg-white border-r border-gray-200 transition-all duration-300 flex flex-col z-20`}>
-            <div className="p-6 border-b border-gray-100 flex justify-center">
+<aside className={`${isOpen ? 'w-64' : 'w-20'} bg-white border-r border-gray-200 transition-all duration-300 flex flex-col h-full relative`}>      <div className="p-6 border-b border-gray-100 flex justify-center">
                 <img src={nsdl_logo} alt="NSDL" className="h-8 object-contain" />
             </div>
 
@@ -58,11 +57,11 @@ const Sidebar = ({ isOpen }) => {
                                                 User Request
                                             </li>
                                         </Link>
-                                        <Link to="/dashboard/user-list">
+                                        
                                             <li className={`pl-14 py-2 text-[14px] cursor-pointer ${isActive('/dashboard/user-list') ? 'text-[#8B0000] font-bold border-r-4 border-[#8B0000] bg-[#FDF2F2]' : 'text-gray-500 hover:text-[#8B0000]'}`}>
                                                 User List Report
                                             </li>
-                                        </Link>
+                                        
                                     </>
                                 ) : (
                                     <>
@@ -83,13 +82,10 @@ const Sidebar = ({ isOpen }) => {
                     </li>
 
                     {/* Audit Trail */}
-                    
-                        <li className={`flex items-center gap-3 px-6 py-3 cursor-pointer ${isActive('/dashboard/audit-trail') ? 'bg-[#FDF2F2] border-r-4 border-[#8B0000] text-[#8B0000]' : 'text-gray-600 hover:bg-gray-50'}`}>
-                            <FileText size={20} />
-                            {isOpen && <span className="font-medium">Audit Trail</span>}
-                        </li>
-                    
-
+                    <li className={`flex items-center gap-3 px-6 py-3 cursor-pointer ${isActive('/dashboard/audit-trail') ? 'bg-[#FDF2F2] border-r-4 border-[#8B0000] text-[#8B0000]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                        <FileText size={20} />
+                        {isOpen && <span className="font-medium">Audit Trail</span>}
+                    </li>
 
                     {/* Wallet Adjustment Link */}
                     <Link to="/dashboard/wallet-adjustment">

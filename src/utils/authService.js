@@ -75,3 +75,51 @@ export const performBankLogin = async (encryptedString) => {
     }
   );
 };
+
+
+// 3. The Main Login Call
+export const dashboardapi = async (auth) => {
+  return await axios.get(`${BANK_API_BASE}/user-mgmt/user/dashboard`, 
+    
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Web',
+        'Geo-Location': 'eyJkZXZpY2UiOiJXRUIiLCJsYXRpdHVkZSI6MjAuMzM3MDcwMjM4MjIyMzYzLCJsb25naXR1ZGUiOjg1LjgwOTU0NDM0NTUzMDQ0LCJjaXR5IjoiQmh1YmFuZXN3YXIiLCJjb3VudHJ5IjoiSW5kaWEiLCJjb250aW5lbnQiOiJBc2lhIn0=',
+        'Authorization': `${auth}`
+      }
+    }
+  );
+};
+
+// 3. The Main Login Call
+// export const FetchUserListMaker = async (encryptedString,auth) => {
+//   return await axios.post(`${BANK_API_BASE}/user_onboarding/fetch-user-list`, 
+//       encryptedString ,
+//     {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'User-Agent': 'Web',
+//         'Geo-Location': 'eyJkZXZpY2UiOiJXRUIiLCJsYXRpdHVkZSI6MjAuMzM3MDcwMjM4MjIyMzYzLCJsb25naXR1ZGUiOjg1LjgwOTU0NDM0NTUzMDQ0LCJjaXR5IjoiQmh1YmFuZXN3YXIiLCJjb3VudHJ5IjoiSW5kaWEiLCJjb250aW5lbnQiOiJBc2lhIn0=',
+//         'Authorization': `${auth}`
+//       }
+//     }
+//   );
+// };
+
+export const FetchUserListMaker = async (encryptedString, auth) => {
+  // Direct URL instead of proxy path
+  const DIRECT_URL = "https://apidev.iserveu.online/NSDL/user_onboarding/fetch-user-list";
+
+  return await axios.post(DIRECT_URL, encryptedString, {
+    headers: {
+      'Content-Type': 'application/json',
+      'User-Agent': 'Web',
+      'Authorization': auth
+      // Note: Some browsers won't let you set 'User-Agent' manually in a direct call
+    }
+  });
+};
+
+
+
