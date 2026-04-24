@@ -76,6 +76,34 @@ export const performBankLogin = async (encryptedString) => {
   );
 };
 
+export const forgotPassword = async (encryptedString,username) => {
+  return await axios.post(`${BANK_API_BASE}/utility/send-forgot-password-otp?userName=username`, 
+    {}, 
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Web',
+        'Geo-Location': 'eyJkZXZpY2UiOiJXRUIiLCJsYXRpdHVkZSI6MjAuMzM3MDcwMjM4MjIyMzYzLCJsb25naXR1ZGUiOjg1LjgwOTU0NDM0NTUzMDQ0LCJjaXR5IjoiQmh1YmFuZXN3YXIiLCJjb3VudHJ5IjoiSW5kaWEiLCJjb250aW5lbnQiOiJBc2lhIn0=',
+        'Authorization': 'Basic bnNkbGFiLWludGVybmFsLWNsaWVudDpuc2RsYWItaW50ZXJuYWwtcGFzc3dvcmQ='
+      }
+    }
+  );
+};
+
+export const verifyOtp = async (req) => {
+  return await axios.post(`${BANK_API_BASE}/verify-otp-send-temporary-password`, 
+    {req}, 
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Web',
+        'Geo-Location': 'eyJkZXZpY2UiOiJXRUIiLCJsYXRpdHVkZSI6MjAuMzM3MDcwMjM4MjIyMzYzLCJsb25naXR1ZGUiOjg1LjgwOTU0NDM0NTUzMDQ0LCJjaXR5IjoiQmh1YmFuZXN3YXIiLCJjb3VudHJ5IjoiSW5kaWEiLCJjb250aW5lbnQiOiJBc2lhIn0=',
+        'Authorization': 'Basic bnNkbGFiLWludGVybmFsLWNsaWVudDpuc2RsYWItaW50ZXJuYWwtcGFzc3dvcmQ='
+      }
+    }
+  );
+};
+
 
 // 3. The Main Login Call
 export const dashboardapi = async (auth) => {
